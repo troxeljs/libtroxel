@@ -1,0 +1,209 @@
+{
+  "name": "libtroxel",
+  "version": "1.0.0",
+  "description": "a JavaScript library for embedding voxel models rendered with Troxel into websites",
+  "registry": "jspm",
+  "main": "libTroxel.js",
+  "format": "cjs",
+  "jspmPackage": true,
+  "scripts": {
+    "build": "mkdirp dist && concurrent -p command -l 20 \"npm run build:js\" \"npm run build:min.js\" \"cp test/libTroxelTest.html dist/libtroxeltest.html\"",
+    "build:js": "jspm build libTroxel.js dist/libtroxel-1.9.js --skip-source-maps --global-name Troxel",
+    "build:min.js": "jspm build libTroxel.js dist/libtroxel-1.9.min.js --skip-source-maps --minify --global-name Troxel",
+    "prepublish": "jspm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/troxeljs/libtroxel.git"
+  },
+  "author": "Christian Moritz",
+  "license": "LGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/troxeljs/libtroxel/issues"
+  },
+  "homepage": "https://github.com/troxeljs/libtroxel#readme",
+  "devDependencies": {
+    "concurrently": "^1.0.0",
+    "jspm": "^0.17.0-beta.11"
+  },
+  "jspm": {
+    "name": "libtroxel",
+    "dependencies": {
+      "coffee": "github:chrmoritz/system-coffee@^0.2.0",
+      "jquery": "github:components/jquery@^2.2.0",
+      "three": "github:mrdoob/three.js@r71",
+      "troxel": "github:chrmoritz/troxel@master"
+    },
+    "devDependencies": {
+      "plugin-typescript": "github:frankwallis/plugin-typescript@^2.6.0"
+    },
+    "peerDependencies": {
+      "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
+      "buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha",
+      "child_process": "github:jspm/nodelibs-child_process@^0.2.0-alpha",
+      "events": "github:jspm/nodelibs-events@^0.2.0-alpha",
+      "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
+      "http": "github:jspm/nodelibs-http@^0.2.0-alpha",
+      "https": "github:jspm/nodelibs-https@^0.2.0-alpha",
+      "module": "github:jspm/nodelibs-module@^0.2.0-alpha",
+      "os": "github:jspm/nodelibs-os@^0.2.0-alpha",
+      "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
+      "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
+      "repl": "github:jspm/nodelibs-repl@^0.2.0-alpha",
+      "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
+      "url": "github:jspm/nodelibs-url@^0.2.0-alpha",
+      "util": "github:jspm/nodelibs-util@^0.2.0-alpha",
+      "vm": "github:jspm/nodelibs-vm@^0.2.0-alpha"
+    },
+    "overrides": {
+      "github:components/jquery@2.2.1": {
+        "main": "jquery"
+      },
+      "github:mrdoob/three.js@r71": {
+        "main": "build/three",
+        "ignore": [
+          "docs",
+          "src",
+          "editor",
+          "test",
+          "utils",
+          "examples/*.html",
+          "examples/models",
+          "examples/scenes",
+          "examples/sounds",
+          "examples/obj",
+          "examples/textures"
+        ],
+        "format": "global",
+        "meta": {
+          "build/three.js": {
+            "exports": "THREE"
+          },
+          "examples/js/shaders/SSAOShader.js": {
+            "deps": [
+              "three"
+            ],
+            "exports": "THREE"
+          },
+          "examples/js/shaders/FXAAShader.js": {
+            "deps": [
+              "three"
+            ],
+            "exports": "THREE"
+          },
+          "examples/js/shaders/CopyShader.js": {
+            "deps": [
+              "three"
+            ],
+            "exports": "THREE"
+          },
+          "examples/js/postprocessing/ShaderPass.js": {
+            "deps": [
+              "three"
+            ],
+            "exports": "THREE"
+          },
+          "examples/js/postprocessing/RenderPass.js": {
+            "deps": [
+              "three"
+            ],
+            "exports": "THREE"
+          },
+          "examples/js/postprocessing/MaskPass.js": {
+            "deps": [
+              "three"
+            ],
+            "exports": "THREE"
+          },
+          "examples/js/postprocessing/EffectComposer.js": {
+            "deps": [
+              "three"
+            ],
+            "exports": "THREE"
+          }
+        }
+      },
+      "github:twbs/bootstrap@3.3.6": {
+        "shim": {
+          "js/bootstrap": {
+            "deps": [
+              "jquery"
+            ],
+            "exports": "$"
+          }
+        },
+        "dependencies": {
+          "jquery": "github:components/jquery"
+        },
+        "files": [
+          "dist",
+          "fonts",
+          "js",
+          "css",
+          "less",
+          "grunt",
+          "LICENSE"
+        ],
+        "systemjs": {
+          "main": "dist/js/bootstrap.js",
+          "modules": {
+            "dist/js/bootstrap.js": {
+              "deps": [
+                "jquery"
+              ],
+              "exports": "$"
+            }
+          }
+        }
+      },
+      "github:twitter/typeahead.js@0.11.1": {
+        "dependencies": {
+          "jquery": "*"
+        },
+        "meta": {
+          "dist/typeahead.bundle.js": {
+            "deps": [
+              "jquery"
+            ],
+            "format": "global"
+          }
+        }
+      },
+      "npm:bluebird@3.3.4": {
+        "meta": {
+          "js/browser/bluebird.js": {
+            "format": "global"
+          },
+          "js/browser/bluebird.min.js": {
+            "format": "global"
+          }
+        }
+      },
+      "npm:coffee-script@1.10.0": {
+        "map": {
+          "child_process": "@empty"
+        }
+      },
+      "npm:inherits@2.0.1": {
+        "ignore": [
+          "test.js"
+        ]
+      },
+      "npm:jquery@2.2.2": {
+        "format": "amd"
+      },
+      "npm:typescript@1.7.5": {
+        "browser": {},
+        "map": {
+          "buffer": "@empty",
+          "child_process": "@empty",
+          "fs": "@empty",
+          "os": "@empty",
+          "path": "@empty",
+          "process": "@empty",
+          "readline": "@empty"
+        }
+      }
+    }
+  }
+}

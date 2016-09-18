@@ -27903,7 +27903,7 @@ $__System.registerDynamic("1", ["d", "3", "e", "5"], true, function($__require, 
       global = this,
       GLOBAL = this;
   var $ = $__require('d');
-  module.exports = {
+  var Troxel = {
     blueprints: null,
     webgl: function() {
       try {
@@ -28209,6 +28209,7 @@ $__System.registerDynamic("1", ["d", "3", "e", "5"], true, function($__require, 
       };
     }
   };
+  module.exports = Troxel;
   $(function() {
     $('div[data-troxel-blueprint]').each(function() {
       Troxel.renderBlueprint($(this).data('troxel-blueprint'), this, $(this).data('troxel-options'));

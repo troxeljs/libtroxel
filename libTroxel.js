@@ -1,6 +1,6 @@
 'use strict';
 var $ = require('jquery');
-module.exports = {
+var Troxel = {
   blueprints: null,
   webgl: function() {
     try {
@@ -312,6 +312,8 @@ module.exports = {
     };
   }
 };
+
+module.exports = Troxel;
 
 $(function() {
   $('div[data-troxel-blueprint]').each(function() {
